@@ -1,0 +1,6 @@
+mutation RegisterAccount($email:String!){
+    registerAccount(email: $email){
+        registerAccountStatus,
+        registerAccountMessage
+    }
+}
