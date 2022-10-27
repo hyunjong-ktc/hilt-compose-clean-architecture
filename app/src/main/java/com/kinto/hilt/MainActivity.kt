@@ -1,5 +1,6 @@
 package com.kinto.hilt
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.edit
+import com.hilt.PrismPrefs
 import com.hilt.data.response.Toyota
 import com.kinto.domain.repository.UserRepository
 import com.kinto.domain.usecase.GetUserUseCase
@@ -36,17 +39,29 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var signUpUseCase: SignUpUseCase
 
+    @PrismPrefs
+    @Inject
+    lateinit var prismPrefs: SharedPreferences
+
+
 //    @Inject
 //    lateinit var graphQlClient:
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
+        prismPrefs.edit {
+            putString("idToken", "TOKEN4444")
+            apply()
+        }
         setContent {
             LaunchedEffect(Unit) {
-                println("is>>>>>>>${signUpUseCase.get("teryli@lyricspad.net").isExisting}")
-                println("message>>>>>>>${signUpUseCase.get("teryli@lyricspad.net").message}")
+                try {
+                    println("is>>>>>>>${signUpUseCase.get("teryli@lyricspad.net").isExisting}")
+                    println("message>>>>>>>${signUpUseCase.get("teryli@lyricspad.net").message}")
+                } catch (e: java.lang.Exception) {
+                }
+
             }
             HiltComposeUITheme {
                 println(userUseCase.get())

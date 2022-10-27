@@ -1,6 +1,7 @@
-package com.hilt.data
+package com.hilt
 
 import com.apollographql.apollo3.api.ApolloResponse
+import com.hilt.data.RegisterAccountMutation
 import com.kinto.domain.model.SignUpEmailModel
 
 fun ApolloResponse<RegisterAccountMutation.Data>.toModel(): SignUpEmailModel {

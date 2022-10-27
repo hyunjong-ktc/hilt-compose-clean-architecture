@@ -1,13 +1,11 @@
-package com.hilt.data.repository
+package com.hilt.repository
 
 import com.apollographql.apollo3.ApolloClient
+import com.hilt.PrismApolloClient
 import com.hilt.data.RegisterAccountMutation
-import com.hilt.data.remote.PrismApolloClient
-import com.hilt.data.toModel
+import com.hilt.toModel
 import com.kinto.domain.model.SignUpEmailModel
 import com.kinto.domain.repository.SignUpRepository
-import dagger.Provides
-import javax.inject.Inject
 
 class SignUpRepositoryImpl(@PrismApolloClient val apolloClient: ApolloClient) :
     SignUpRepository {

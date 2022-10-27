@@ -1,0 +1,718 @@
+type GetAccountSettingOutput {
+  notificationSettings: Boolean!
+}
+
+type CustomKid {
+  kidId: Int!
+
+  birthYear: Int!
+
+  birthMonth: Int
+}
+
+type GetUserInfoOutput {
+  image: String
+
+  nickname: String
+
+  age: Int
+
+  sex: Int
+
+  kids: [CustomKid!]
+
+  tags: [String!]
+
+  status: Int!
+
+  prefecture: String
+
+  carType: CarType
+
+  transportationType: [String!]
+
+  familyMembers: [String!]
+
+  postalCode: String
+
+  city: String
+
+  street: String
+
+  building: String
+
+  firstQuestionAnswer: String
+
+  secondQuestionAnswer: String
+
+  homeGeocode: [String!]
+}
+
+enum CarType {
+  hasCar
+
+  noCar
+}
+
+type UpdateUserInfoOutput {
+  updateStatus: Boolean!
+
+  updateMessage: String!
+}
+
+type UpdateUserPolicyAgreeOutput {
+  updateStatus: Boolean!
+
+  updateMessage: String!
+}
+
+type UpdateAccountSettingOutput {
+  updateStatus: Boolean!
+
+  updateMessage: String!
+}
+
+type CustomTravelTogether {
+  friends: Boolean!
+
+  kids: Boolean!
+
+  wifeHusband: Boolean!
+
+  boyfriendGirlfriend: Boolean!
+
+  parents: Boolean!
+
+  alone: Boolean!
+
+  others: Boolean!
+}
+
+type GetUserSearchConditionsOutput {
+  travelTogether: CustomTravelTogether!
+}
+
+type UpdateUserSearchConditionsOutput {
+  updateMessage: String!
+}
+
+type ChangeAnnouncementStateOutput {
+  status: Boolean
+
+  message: String
+}
+
+type GetAddressByPostalCodeOutput {
+  prefecture: String
+
+  city: String
+
+  restPart: String
+}
+
+type AnnouncementsOutput {
+  title: String
+
+  url: String
+
+  type: String
+
+  id: Int
+
+  date: String
+
+  read: Boolean
+}
+
+type GetAnnouncementListOutput {
+  announcements: [AnnouncementsOutput!]!
+}
+
+type RegisterAccountOutput {
+  registerAccountStatus: Boolean!
+
+  registerAccountMessage: String!
+}
+
+type AuthSendConfirmCodeOutput {
+  sendConfirmCodeStatus: Boolean!
+
+  sendConfirmCodeMessage: String!
+}
+
+type AuthConfirmRegisterAccountOutput {
+  confirmRegistrationStatus: Boolean!
+
+  confirmRegistrationMessage: String!
+
+  accessToken: String!
+
+  idToken: String!
+
+  refreshToken: String!
+}
+
+type RefreshTokenOutput {
+  operationStatus: Boolean!
+
+  operationMessage: String!
+
+  accessToken: String!
+
+  idToken: String!
+
+  refreshToken: String!
+}
+
+type LoginOutput {
+  loginStatus: Boolean!
+
+  loginMessage: String!
+
+  accessToken: String!
+
+  idToken: String!
+
+  refreshToken: String!
+
+  policyAgree: Boolean!
+}
+
+type LogoutOutput {
+  logoutStatus: Boolean!
+
+  logoutMessage: String!
+}
+
+type ForgotPasswordOutput {
+  forgotPasswordStatus: Boolean!
+
+  forgotPasswordMessage: String!
+}
+
+type ResetPasswordOutput {
+  passwordResetStatus: Boolean!
+
+  passwordResetMessage: String!
+}
+
+type ChangePasswordOutput {
+  changePasswordStatus: Boolean!
+
+  changePasswordMessage: String!
+}
+
+type DeleteUserOutput {
+  deletionStatus: Boolean!
+
+  deletionMessage: String!
+}
+
+type ChangeEmailOutput {
+  changeEmailStatus: Boolean!
+
+  changeEmailMessage: String!
+}
+
+type ConfirmChangeEmailOutput {
+  email: String!
+
+  changeEmailConfirmationStatus: Boolean!
+
+  changeEmailConfirmationMessage: String!
+}
+
+type SimilarSpots {
+  id: Int
+
+  area: String
+
+  image: Image!
+
+  name: String!
+
+  address: String
+
+  prefecture: String
+
+  city: String
+
+  distance: String!
+
+  geocode: [Float!]
+
+  savedFlag: Boolean
+
+  visitedFlag: Boolean
+}
+
+type NearbySpots {
+  id: Int
+
+  area: String
+
+  image: Image!
+
+  name: String!
+
+  address: String
+
+  prefecture: String
+
+  city: String
+
+  tags: [String!]
+
+  distance: String!
+
+  geocode: [Float!]
+
+  savedFlag: Boolean
+
+  visitedFlag: Boolean
+
+  recommendedFlag: Boolean
+}
+
+type Tags {
+  id: Int!
+
+  tag: String!
+}
+
+type RecommendedSpots {
+  id: Int!
+
+  name: String!
+
+  imageList: [Image!]!
+
+  area: String
+
+  prefecture: String
+
+  city: String
+
+  distance: String!
+
+  tags: [String!]!
+
+  address: String
+
+  score: Float
+
+  googleScore: Float
+
+  savedFlag: Boolean!
+
+  visitedFlag: Boolean!
+
+  geocode: [Float!]
+
+  similarSpots: [SimilarSpots!]!
+
+  nearbySpots: [NearbySpots!]!
+}
+
+type GetRecommendedSpotsListOutput {
+  recommendedSpot: [RecommendedSpots!]!
+
+  tags: [Tags!]!
+
+  total: Int!
+
+  page: Int!
+
+  size: Int!
+}
+
+type SimilarSpot {
+  id: Int!
+
+  name: String!
+
+  imageList: [Image!]!
+
+  area: String
+
+  prefecture: String
+
+  city: String
+
+  distance: String!
+
+  tags: [String!]!
+
+  googleScore: Float!
+
+  address: String!
+
+  score: Float!
+
+  savedFlag: Boolean!
+
+  visitedFlag: Boolean!
+
+  geocode: [Float!]
+
+  similarSpots: [SimilarSpots!]!
+
+  nearbySpots: [NearbySpots!]!
+}
+
+type GetSimilarSpotsOutput {
+  similarSpot: [SimilarSpot!]!
+
+  tags: [Tags!]!
+
+  total: Int!
+
+  page: Int!
+
+  size: Int!
+}
+
+type Image {
+  id: Int
+
+  url: String
+
+  presigned_url: String
+}
+
+type GetSpotDetailsOutput {
+  id: Float!
+
+  image: Image!
+
+  imageList: [Image!]!
+
+  name: String
+
+  prefecture: String
+
+  address: String
+
+  area: String
+
+  city: String
+
+  street: String
+
+  building: String
+
+  postalCode: String
+
+  distance: String!
+
+  personalReviewId: Float
+
+  score: Float!
+
+  googleScore: Float!
+
+  geocode: [Float!]
+
+  tags: [String!]!
+
+  savedFlag: Boolean
+
+  visitedFlag: Boolean
+
+  similarSpots: [SimilarSpots!]
+
+  nearbySpots: [NearbySpots!]
+}
+
+type NearbySpot {
+  id: Int!
+
+  name: String!
+
+  imageList: [Image!]!
+
+  area: String
+
+  prefecture: String
+
+  city: String
+
+  distance: String!
+
+  tags: [String!]!
+
+  googleScore: Float!
+
+  address: String!
+
+  score: Float!
+
+  savedFlag: Boolean!
+
+  visitedFlag: Boolean!
+
+  geocode: [Float!]
+
+  similarSpots: [SimilarSpots!]!
+
+  nearbySpots: [NearbySpots!]!
+}
+
+type GetNearbySpotsOutput {
+  nearbySpot: [NearbySpot!]!
+
+  tags: [Tags!]!
+
+  total: Int!
+
+  page: Int!
+
+  size: Int!
+}
+
+type GetSpotsByImage {
+  id: Int!
+
+  name: String!
+
+  area: String
+
+  prefecture: String!
+
+  city: String!
+
+  imageList: [Image!]!
+
+  distance: String!
+
+  tags: [String!]!
+
+  googleScore: Float!
+
+  geocode: [Float!]!
+
+  address: String!
+
+  score: Float!
+
+  savedFlag: Boolean!
+
+  visitedFlag: Boolean!
+
+  similarSpots: [SimilarSpots!]!
+
+  nearbySpots: [NearbySpots!]!
+}
+
+type GetSpotsByImageOutput {
+  aiImageSpot: [GetSpotsByImage!]!
+
+  tags: [Tags!]!
+
+  total: Int!
+
+  page: Int!
+
+  size: Int!
+}
+
+type UpdateSpotReviewOutput {
+  updateStatus: Boolean!
+
+  updateMessage: String!
+}
+
+type ListBookmarks {
+  id: Int!
+
+  spotId: Int!
+
+  name: String
+
+  image: Image
+
+  imageList: [Image!]
+
+  savedFlag: Boolean
+
+  visitedFlag: Boolean
+
+  postalCode: String
+
+  area: String
+
+  geocode: [Float!]
+
+  address: String
+
+  prefecture: String
+
+  city: String
+
+  street: String
+
+  building: String
+
+  distance: String
+
+  tags: [String!]
+
+  score: Float
+
+  googleScore: Float
+
+  similarSpots: [SimilarSpots!]
+
+  nearbySpots: [NearbySpots!]
+}
+
+type ListBookmarksByUserOutput {
+  bookmark: [ListBookmarks!]!
+
+  total: Int!
+
+  page: Int!
+
+  size: Int!
+}
+
+type DeleteSpotBookmarkOutput {
+  status: Boolean!
+
+  message: String!
+}
+
+type UpdateSpotBookmarkOutput {
+  status: Boolean!
+
+  message: String!
+}
+
+type DeleteSpotReviewOutput {
+  deleteStatus: Boolean!
+
+  deleteMessage: String!
+}
+
+type GetUploadLinkOutput {
+  upload_url: String!
+
+  image_url: String!
+}
+
+type GetDistanceOutput {
+  distance: Float!
+}
+
+type GetSwipePhotosOutput {
+  nextImageIds: [Image!]!
+}
+
+type GetStartupUpdateModeOutput {
+  versionUpMode: String!
+}
+
+type Query {
+  getUserSearchConditions: GetUserSearchConditionsOutput!
+
+  getUserInformation: GetUserInfoOutput!
+
+  getAccountSetting: GetAccountSettingOutput!
+
+  getAddressByPostalCode(postalCode: String!): GetAddressByPostalCodeOutput!
+
+  getAnnouncementList(limit: Int!, page: Float!): GetAnnouncementListOutput!
+
+  sendConfirmCode(email: String!): AuthSendConfirmCodeOutput!
+
+  confirmRegisterAccount(newPassword: String!, tempPassword: String!, email: String!): AuthConfirmRegisterAccountOutput!
+
+  refreshToken(refreshToken: String!): RefreshTokenOutput!
+
+  loginUser(email: String!, password: String!): LoginOutput!
+
+  logoutUser(accessToken: String!): LogoutOutput!
+
+  forgotPassword(email: String!): ForgotPasswordOutput!
+
+  resetPassword(confirmationCode: String!, email: String!, newPassword: String!): ResetPasswordOutput!
+
+  changePassword(accessToken: String!, oldPassword: String!, newPassword: String!): ChangePasswordOutput!
+
+  getSpotDetails(spotId: Float!, distanceMeasureFrom: [String!] = ["35.6809591","139.7673068"], distance: [Int!]): GetSpotDetailsOutput!
+
+  getRecommendedSpotsList(spotTags: [Int!], userTags: [Int!], likedImagelist: [Int!], orderType: [String!] = ["match"], columnDisplay: Int = 1, travelTogether: [String!], searchRange: [String!] = ["mapCenter"], distanceSearchSpot: [String!], distanceMeasureFrom: [String!] = ["35.6809591","139.7673068"], distance: [Int!] = [0,3500], searchAreaCity: String, excludeVisitedPlaces: Boolean, additionalTag: Int, pageSize: Int = 20, page: Int = 1): GetRecommendedSpotsListOutput!
+
+  listBookmarksByUser(orderType: [String!] = [], columnDisplay: Int = 1, travelTogether: [String!], searchRange: [String!], distanceSearchSpot: [String!], distanceMeasureFrom: [String!] = ["35.6809591","139.7673068"], distance: [Int!], searchAreaCity: String, excludeVisitedPlaces: Boolean, pageSize: Int = 10, page: Int = 1): ListBookmarksByUserOutput!
+
+  getSimilarSpots(imageId: Float!, orderType: [String!] = ["match"], columnDisplay: Int = 1, distanceMeasureFrom: [String!] = ["35.6809591","139.7673068"], pageSize: Int = 20, page: Int = 1, distanceSearchSpot: [String!], travelTogether: [String!], searchRange: [String!], distance: [Int!], searchAreaCity: String, excludeVisitedPlaces: Boolean, additionalTag: Int): GetSimilarSpotsOutput!
+
+  getNearbySpots(spotId: Int!, orderType: [String!] = ["match"], columnDisplay: Int = 1, distanceMeasureFrom: [String!] = ["35.6809591","139.7673068"], pageSize: Int = 20, page: Int = 1, distanceSearchSpot: [String!], travelTogether: [String!], searchRange: [String!], distance: [Int!], searchAreaCity: String, excludeVisitedPlaces: Boolean, additionalTag: Int): GetNearbySpotsOutput!
+
+  getSpotsByImage(imageUrl: String!, orderType: [String!] = ["match"], distanceMeasureFrom: [String!] = ["35.6809591","139.7673068"], columnDisplay: Int = 1, pageSize: Int = 20, page: Int = 1, distanceSearchSpot: [String!], travelTogether: [String!], searchRange: [String!], distance: [Int!], searchAreaCity: String, excludeVisitedPlaces: Boolean, additionalTag: Int): GetSpotsByImageOutput!
+
+  getUploadLink(filePath: String!, contentType: String!): GetUploadLinkOutput!
+
+  getDistance(distanceSearchSpotFrom: [Float!]!, distanceSearchSpotTo: [Float!]!): GetDistanceOutput!
+
+  getSwipePhoto(prevImageId: Int = 0): GetSwipePhotosOutput!
+
+  getStartupUpdateMode(appVersion: String!): GetStartupUpdateModeOutput!
+}
+
+type Mutation {
+  updateUserSearchConditions(travelTogether: UpdateTravelTogetherInput!): UpdateUserSearchConditionsOutput!
+
+  updateUserInfo(image: String, nickname: String, age: Float, sex: Float, carType: String, familyMembers: [String!], userTags: [Int!], kids: [CustomKidUpdateInput!], transportationType: [String!], userStatus: Int, postalCode: String, prefecture: String, city: String, street: String, building: String, firstQuestionAnswer: String, secondQuestionAnswer: String, homeGeocode: [String!]!): UpdateUserInfoOutput!
+
+  updateAccountSettings(notificationSettings: Boolean): UpdateAccountSettingOutput!
+
+  updateUserPolicyAgree: UpdateUserPolicyAgreeOutput!
+
+  changeAnnouncementList(read: Boolean!, announcementId: Int!): ChangeAnnouncementStateOutput!
+
+  registerAccount(email: String!): RegisterAccountOutput!
+
+  changeEmail(password: String!, newEmail: String!): ChangeEmailOutput!
+
+  confirmChangeEmail(confirmationCode: String!): ConfirmChangeEmailOutput!
+
+  deleteUser(cancellationMessage: String): DeleteUserOutput!
+
+  updateSpotReview(spotId: Float!, review: Float = 0): UpdateSpotReviewOutput!
+
+  deleteSpotReview(spotId: Int!): DeleteSpotReviewOutput!
+
+  deleteSpotBookmark(spotId: Int!): DeleteSpotBookmarkOutput!
+
+  updateSpotBookmark(spotId: Float!, savedFlag: Boolean, visitedFlag: Boolean): UpdateSpotBookmarkOutput!
+}
+
+input UpdateTravelTogetherInput {
+  friends: Boolean!
+
+  kids: Boolean!
+
+  wifeHusband: Boolean!
+
+  boyfriendGirlfriend: Boolean!
+
+  parents: Boolean!
+
+  alone: Boolean!
+
+  others: Boolean!
+}
+
+input CustomKidUpdateInput {
+  kidId: Int
+
+  birthYear: Int!
+
+  birthMonth: Int!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
